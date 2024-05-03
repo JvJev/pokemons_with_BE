@@ -1,0 +1,18 @@
+.navbar {
+  background-color: rgb(23, 27, 71);
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.nav-link:hover {
+  color: rgb(255, 10, 2);
+}
