@@ -18,7 +18,7 @@ app.use(express.json());
 // Test posgres connection
 app.get('/test-connection', async (req, res) => {
   try {
-    await pool.query('SELECT 1'); // Simple query to test connection
+    await pool.query('SELECT 1'); 
     res.json({ message: 'Connection to PostgreSQL successful!' });
   } catch (error) {
     console.error('Error testing connection:', error);
@@ -28,11 +28,11 @@ app.get('/test-connection', async (req, res) => {
 
 app.get('/pokemons', async (req, res) => {
   try {
-    const { rows } = await pool.query('SELECT * FROM pokemons');
+    const { rows } = await pool.query('SELECT * FROM pokemons_table');
     res.json(rows);
   } catch (err) {
     console.error('Error executing query', err.stack);
-    res.status(500).send('Error fetching data'); // Improved error message
+    res.status(500).send('Error fetching data'); 
   }
 });
 
