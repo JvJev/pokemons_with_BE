@@ -1,34 +1,38 @@
 const express = require('express');
 const { Pool } = require('pg');
 
-// Configure PostgreSQL connection
 const pool = new Pool({
-  user: 'yourUsername',     // Your database username
+  user: 'postgres', 
   host: 'localhost',
-  database: 'yourDatabase', // Your database name
-  password: 'yourPassword', // Your database password
-  port: 8008,               // Your PostgreSQL port
+  database: 'pokemons_database', 
+  password: 'a', 
+  port: 5432, 
 });
 
 const app = express();
-const PORT = 5000;
+const PORT = 5000; 
 
 // Middleware to parse JSON bodies
 app.use(express.json());
 
-// Test endpoint
-app.get('/', (req, res) => {
-  res.send('Hello World! Test passed.');
+// Test posgres connection
+app.get('/test-connection', async (req, res) => {
+  try {
+    await pool.query('SELECT 1'); // Simple query to test connection
+    res.json({ message: 'Connection to PostgreSQL successful!' });
+  } catch (error) {
+    console.error('Error testing connection:', error);
+    res.status(500).json({ message: 'Error connecting to database' });
+  }
 });
 
-// Example endpoint to fetch data from PostgreSQL
-app.get('/data', async (req, res) => {
+app.get('/pokemons', async (req, res) => {
   try {
-    const { rows } = await pool.query('SELECT * FROM your_table_name LIMIT 10');
+    const { rows } = await pool.query('SELECT * FROM pokemons');
     res.json(rows);
   } catch (err) {
     console.error('Error executing query', err.stack);
-    res.status(500).send('Error fetching data');
+    res.status(500).send('Error fetching data'); // Improved error message
   }
 });
 
