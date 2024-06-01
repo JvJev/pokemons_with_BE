@@ -42,7 +42,7 @@ const fetchPokemonData = async (url) => {
 
 const fetchAndAddPokemons = async (req, res) => {
   try {
-    const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=30');
+    const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=3');
     const pokemons = response.data.results;
 
     const pokemonDataArray = await Promise.all(pokemons.map(p => fetchPokemonData(p.url)));
@@ -89,6 +89,7 @@ const getPokemons = async (req, res) => {
 
     res.json(pokemons);
   } catch (error) {
+    console.error('Error fetching Pokemon data:', error); // Logging the error
     res.status(500).json({ error: 'Failed to fetch Pokemon data' });
   }
 };
