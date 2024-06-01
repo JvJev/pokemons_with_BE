@@ -1,14 +1,7 @@
 const express = require('express');
-const { Pool } = require('pg');
 const axios = require('axios');
-
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'pokemons_database',
-  password: 'a',
-  port: 5432,
-});
+const sequelize = require('./models');
+const Pokemon = require('./models/pokemon');
 
 const app = express();
 const PORT = 5000;
@@ -17,7 +10,7 @@ app.use(express.json());
 
 const testConnection = async (req, res) => {
   try {
-    await pool.query('SELECT 1');
+    await sequelize.authenticate();
     res.json({ message: 'Connection to PostgreSQL successful!' });
   } catch (error) {
     console.error('Error testing connection:', error);
@@ -48,18 +41,7 @@ const fetchAndAddPokemons = async (req, res) => {
     const pokemonDataArray = await Promise.all(pokemons.map(p => fetchPokemonData(p.url)));
 
     for (const pokemon of pokemonDataArray) {
-      await pool.query(
-        `INSERT INTO pokemons_table (id, name, height, weight, abilities, types, stats)
-         VALUES ($1, $2, $3, $4, $5, $6, $7)
-         ON CONFLICT (id) DO UPDATE
-         SET name = EXCLUDED.name,
-             height = EXCLUDED.height,
-             weight = EXCLUDED.weight,
-             abilities = EXCLUDED.abilities,
-             types = EXCLUDED.types,
-             stats = EXCLUDED.stats`,
-        [pokemon.id, pokemon.name, pokemon.height, pokemon.weight, pokemon.abilities, pokemon.types, pokemon.stats]
-      );
+      await Pokemon.upsert(pokemon);
     }
 
     res.json({ message: 'Pokémons added to the database successfully!' });
