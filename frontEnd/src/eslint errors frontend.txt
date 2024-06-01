@@ -1,0 +1,67 @@
+$ npx eslint .
+
+C:\Users\vikap\OneDrive\Desktop\pokemons_with_BE\frontEnd\src\App.js
+  12:28  error  Missing trailing comma                         comma-dangle    
+  21:5   error  JSX not allowed in files with extension '.js'  react/jsx-filename-extension
+  30:43  error  JSX props should not use functions             react/jsx-no-bind
+
+C:\Users\vikap\OneDrive\Desktop\pokemons_with_BE\frontEnd\src\components\Navbar.js
+  5:16  error  Function component is not a function declaration
+                                       react/function-component-definition     
+  5:22  error  Unexpected block statement surrounding arrow body; move the returned value immediately after the `=>`  arrow-body-style
+  7:5   error  JSX not allowed in files with extension '.js'
+                                       react/jsx-filename-extension
+
+C:\Users\vikap\OneDrive\Desktop\pokemons_with_BE\frontEnd\src\components\pokemonCard.js
+   6:21  error    Function component is not a function declaration     react/function-component-definition
+   6:24  error    'pokemonId' is missing in props validation           react/prop-types
+   6:35  error    'onDelete' is missing in props validation            react/prop-types
+  13:60  error    Missing trailing comma                               comma-dangle
+  17:9   warning  Unexpected console statement                         no-console
+  25:12  error    JSX not allowed in files with extension '.js'        react/jsx-filename-extension
+  35:38  error    `{pokemonData.name}` must be placed on a new line    react/jsx-one-expression-per-line
+  36:12  error    `Weight: ` must be placed on a new line              react/jsx-one-expression-per-line
+  36:20  error    `{pokemonData.weight}` must be placed on a new line  react/jsx-one-expression-per-line
+  37:12  error    `Height: ` must be placed on a new line              react/jsx-one-expression-per-line
+  37:20  error    `{pokemonData.height}` must be placed on a new line  react/jsx-one-expression-per-line
+  45:9   error    Missing an explicit type attribute for button        react/button-has-type
+
+C:\Users\vikap\OneDrive\Desktop\pokemons_with_BE\frontEnd\src\index.js
+   5:29  error  Unable to resolve path to module './reportWebVitals'  import/no-unresolved
+   5:29  error  Missing file extension for "./reportWebVitals"        import/extensions
+   9:3   error  JSX not allowed in files with extension '.js'         react/jsx-filename-extension
+  11:22  error  Missing trailing comma                                comma-dangle
+
+C:\Users\vikap\OneDrive\Desktop\pokemons_with_BE\frontEnd\src\pages\home.js    
+  4:1   error  More than 1 blank line not allowed
+                                 no-multiple-empty-lines
+  5:17  error  'pokemonId' is missing in props validation
+                                 react/prop-types
+  5:28  error  'deleteHandler' is missing in props validation
+                                 react/prop-types
+  7:5   error  Fragments should contain more than one child - otherwise, there’s no need for a Fragment at all  react/jsx-no-useless-fragment
+  7:5   error  JSX not allowed in files with extension '.js'
+                                 react/jsx-filename-extension
+  9:20  error  'pokemonId.map' is missing in props validation
+                                 react/prop-types
+  9:25  error  'pokemonId' is already declared in the upper scope on line 5 column 17                           no-shadow
+
+C:\Users\vikap\OneDrive\Desktop\pokemons_with_BE\frontEnd\src\pages\singleCard.js
+  14:53  error    Missing trailing comma                               comma-dangle
+  18:9   warning  Unexpected console statement                         no-console
+  26:12  error    JSX not allowed in files with extension '.js'        react/jsx-filename-extension
+  51:18  error    `Weight: ` must be placed on a new line              react/jsx-one-expression-per-line
+  51:26  error    `{pokemonData.weight}` must be placed on a new line  react/jsx-one-expression-per-line
+  52:18  error    `Height: ` must be placed on a new line              react/jsx-one-expression-per-line
+  52:26  error    `{pokemonData.height}` must be placed on a new line  react/jsx-one-expression-per-line
+  53:18  error    `Abilities: ` must be placed on a new line           react/jsx-one-expression-per-line
+  53:29  error    `{abilities}` must be placed on a new line           react/jsx-one-expression-per-line
+  54:18  error    `Types: ` must be placed on a new line               react/jsx-one-expression-per-line
+  54:25  error    `{types}` must be placed on a new line               react/jsx-one-expression-per-line
+  57:21  error    `br` must be placed on a new line                    react/jsx-one-expression-per-line
+  57:21  error    Empty components are self-closing                    react/self-closing-comp
+  57:31  error    `{stats}` must be placed on a new line               react/jsx-one-expression-per-line
+
+✖ 43 problems (41 errors, 2 warnings)
+  25 errors and 0 warnings potentially fixable with the `--fix` option.        
+
