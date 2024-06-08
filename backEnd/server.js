@@ -3,6 +3,7 @@ const axios = require('axios');
 const sequelize = require('./models');
 const Pokemon = require('./models/pokemon');
 
+
 const app = express();
 const PORT = 5000;
 
